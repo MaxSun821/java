@@ -1,5 +1,7 @@
 package com.max.test1;
 
+import com.max.test2.MyDate;
+
 /**
  * ClassName: Employee
  * Package: com.max.test1
