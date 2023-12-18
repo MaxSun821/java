@@ -15,5 +15,9 @@ public class Main {
         e1.mOL(10);
         e1.mOL(6, 9);
         e1.mOL("我超强");
+
+        Exer2 e2 = new Exer2();
+        double max = e2.max(10.3, 23.5,5.2);
+        System.out.println(max);
     }
 }
