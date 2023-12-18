@@ -11,8 +11,10 @@ package com.max.test10;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println(method1(10));
-        System.out.println(method2(10));
+//        System.out.println(method1(10));
+//        System.out.println(method2(10));
+        System.out.println(rabbit(24));
+        System.out.println(move(10));
     }
     public static int method1(int num) {
         if(num == 20) {
@@ -32,5 +34,25 @@ public class Main {
             return 4;
         }
         return 2 * method2(num - 1) - method2(num - 2);
+    }
+
+    public static int rabbit(int month) {
+        if(month == 1) {
+            return 1;
+        }
+        if(month == 2) {
+            return 1;
+        }
+        return rabbit(month - 1) + rabbit(month - 2);
+    }
+
+    public static int move(int step) {
+        if(step == 1) {
+            return 1;
+        }
+        if(step == 2) {
+            return 2;
+        }
+        return move(step - 1) + move(step - 2);
     }
 }
