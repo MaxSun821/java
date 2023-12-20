@@ -14,6 +14,7 @@ public class CylinderTest {
         Cylinder cylinder = new Cylinder();
         cylinder.setRadius(3);
         cylinder.setLength(5);
-        System.out.println("圆柱的面积是：" + cylinder.findVolume());
+        System.out.println("圆柱的体积是：" + cylinder.findVolume());
+        System.out.println("圆柱的表面积是：" + cylinder.findArea());
     }
 }

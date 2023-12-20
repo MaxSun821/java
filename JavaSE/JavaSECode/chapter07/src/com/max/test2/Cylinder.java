@@ -23,7 +23,10 @@ public class Cylinder extends Circle{
     public void setLength(double length) {
         this.length = length;
     }
+    public double findArea() {
+        return PI * 2 * getRadius() * length;
+    }
     public double findVolume() {
-        return findArea() * length;
+        return super.findArea() * length;
     }
 }
