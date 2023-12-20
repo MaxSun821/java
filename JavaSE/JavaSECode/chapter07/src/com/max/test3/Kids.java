@@ -23,7 +23,8 @@ public class Kids extends ManKind {
         this.yearsOld = yearsOld;
     }
     public void employeed() {
-        System.out.println("Kids should study and no job");
+        super.employeed();
+        System.out.println("but Kids should study and no job.");
     }
     public void printAge() {
         System.out.println("年龄：" + yearsOld);
