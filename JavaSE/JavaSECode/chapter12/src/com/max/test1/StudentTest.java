@@ -1,6 +1,5 @@
 package com.max.test1;
 
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
