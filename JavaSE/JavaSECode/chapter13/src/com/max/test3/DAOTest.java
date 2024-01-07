@@ -45,7 +45,9 @@ class DAO<T> {
      * @param entity value
      */
     public void save(String id, T entity) {
-        map.put(id, entity);
+        if(!map.containsKey(id)) {
+            map.put(id, entity);
+        }
     }
 
     /**
@@ -57,14 +59,12 @@ class DAO<T> {
         return map.get(id);
     }
     public void update(String id, T entity) {
-        map.put(id, entity);
+        if(map.containsKey(id)) {
+            map.put(id, entity);
+        }
     }
     public List<T> list() {
-        List<T> values = new ArrayList<>();
-        Set<Map.Entry<String, T>> entries = map.entrySet();
-        for (Map.Entry<String, T> entry : entries) {
-            values.add(entry.getValue());
-        }
+        List<T> values = new ArrayList<>(map.values());
         return values;
     }
     public void delete(String id) {
