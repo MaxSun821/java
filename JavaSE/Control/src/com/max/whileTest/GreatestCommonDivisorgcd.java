@@ -1,6 +1,5 @@
 package com.max.whileTest;
 
-import jdk.internal.org.objectweb.asm.tree.MultiANewArrayInsnNode;
 
 import java.util.Scanner;
 
