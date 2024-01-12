@@ -24,6 +24,7 @@ public class SignInTest {
             if(tmp.equals(password)) {
                 flag = false;
                 System.out.println("登录成功");
+                break;
             }
             count++;
         }
