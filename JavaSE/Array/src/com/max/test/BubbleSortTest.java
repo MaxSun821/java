@@ -20,13 +20,18 @@ public class BubbleSortTest {
     public static void bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             // 趟数
+            boolean flag = true;
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 // 一趟冒泡排序
                 if(arr[j] > arr[j + 1]) {
                     int tmp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = tmp;
+                    flag = false;
                 }
+            }
+            if(flag) {
+                break;
             }
         }
     }
