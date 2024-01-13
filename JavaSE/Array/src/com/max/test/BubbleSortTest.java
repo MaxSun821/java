@@ -18,7 +18,8 @@ public class BubbleSortTest {
         System.out.println(Arrays.toString(arr));
     }
     public static void bubbleSort(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            // 趟数
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 // 一趟冒泡排序
                 if(arr[j] > arr[j + 1]) {
