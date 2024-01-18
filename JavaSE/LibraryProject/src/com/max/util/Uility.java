@@ -14,12 +14,19 @@ import java.util.Scanner;
 public class Uility {
     private static Scanner sc = new Scanner(System.in);
 
-    public int getInt() {
+    public static int getInt() {
         int choice = sc.nextInt();
         return choice;
     }
-    public String getString() {
-        String choice = sc.nextLine();
+    public static String getString() {
+        String choice = sc.next();
         return choice;
+    }
+    public static double getDouble() {
+        double choice = sc.nextDouble();
+        return choice;
+    }
+    public static void getClose() {
+        sc.close();
     }
 }

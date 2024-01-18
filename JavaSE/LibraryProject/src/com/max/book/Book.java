@@ -18,6 +18,10 @@ public class Book {
     private String type; // 类型
     private boolean isBorrowed; // 判断是否被借出 false未被借出，true被借出
 
+    public Book(String name) {
+        // 该构造方法只用于查找图书时创建对象
+        this.name = name;
+    }
     public Book(String name, String author, double price, String type) {
         this.name = name;
         this.author = author;
