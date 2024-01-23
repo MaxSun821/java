@@ -36,5 +36,8 @@ public class Main {
 
         System.out.println(myArrayList.indexOf(2));
 
+        myArrayList.set(5, 99);
+        myArrayList.display();
+
     }
 }
