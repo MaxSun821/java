@@ -2,6 +2,8 @@ package com.max.test;
 
 import com.max.domain.MyLinkedList;
 
+import java.util.Stack;
+
 /**
  * ClassName: Main
  * Package: com.max.test
