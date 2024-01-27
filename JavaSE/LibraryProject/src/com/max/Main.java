@@ -43,6 +43,5 @@ public class Main {
             int choice = Uility.getInt();
             user.doWork(choice, bookList);
         }
-
     }
 }
