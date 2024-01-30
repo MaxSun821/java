@@ -17,6 +17,6 @@ public class Main {
         BinaryTree.TreeNode root = bt.createTree();
         //System.out.println(bt.size(root));
 
-        System.out.println(bt.getHeight(root));
+        bt.levelOrder(root);
     }
 }
