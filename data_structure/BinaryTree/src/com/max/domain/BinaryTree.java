@@ -1,5 +1,7 @@
 package com.max.domain;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -38,7 +40,7 @@ public class BinaryTree {
 
         B.left = D;
         B.right = E;
-        //E.right = H;
+        E.right = H;
 
         C.left = F;
         C.right = G;
@@ -93,6 +95,24 @@ public class BinaryTree {
         preOrder(root.right);
     }
 
+    public void preOrderNor(TreeNode root) {
+        if(root == null) {
+            return;
+        }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode cur = root;
+
+        while(cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                System.out.print(cur.val + " ");
+                cur = cur.left;
+            }
+            TreeNode top = stack.pop();
+            cur = top.right;
+        }
+    }
+
     /**
      * 中序遍历
      * @param root 根结点
@@ -107,6 +127,25 @@ public class BinaryTree {
         inOrder(root.right);
     }
 
+    public void inOrderNor(TreeNode root) {
+        if(root == null) {
+            return;
+        }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+
+        TreeNode cur = root;
+
+        while(cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            TreeNode top = stack.pop();
+            System.out.print(top.val + " ");
+            cur = top.right;
+        }
+    }
+
     /**
      * 后序遍历
      * @param root 根结点
@@ -119,6 +158,31 @@ public class BinaryTree {
         inOrder(root.left);
         inOrder(root.right);
         System.out.print(root.val + " ");
+    }
+
+    public void postOrderNor(TreeNode root) {
+        if(root == null) {
+            return;
+        }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+
+        TreeNode cur = root;
+        TreeNode prev = null;
+        while(cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            TreeNode top = stack.peek();
+
+            if(top.right == null || top.right == prev) {
+                System.out.print(top.val + " ");
+                stack.pop();
+                prev = top;
+            } else {
+                cur = top.right;
+            }
+        }
     }
 
     public int getLeafNodeCount(TreeNode root) {
@@ -197,17 +261,22 @@ public class BinaryTree {
      * @return
      */
     public boolean isCompleteTree(TreeNode root) {
-        if(root == null) {
-            return true;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        while(!q.isEmpty()) {
+            TreeNode cur = q.poll();
+            if(cur == null) {
+                break;
+            }
+            q.offer(cur.left);
+            q.offer(cur.right);
         }
-        if(root.left == null && root.right != null) {
-            return false;
+        for (TreeNode treeNode : q) {
+            if(treeNode != null) {
+                return false;
+            }
         }
-
-        boolean leftJudge = isCompleteTree(root.left);
-        boolean rightJudge = isCompleteTree(root.right);
-
-        return leftJudge && rightJudge;
+        return true;
     }
 
     /**

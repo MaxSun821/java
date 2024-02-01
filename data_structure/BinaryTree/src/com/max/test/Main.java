@@ -17,6 +17,14 @@ public class Main {
         BinaryTree.TreeNode root = bt.createTree();
         //System.out.println(bt.size(root));
 
-        bt.levelOrder(root);
+        //System.out.println(bt.isCompleteTree(root));
+
+        bt.preOrderNor(root);
+        System.out.println();
+        bt.inOrderNor(root);
+        System.out.println();
+        bt.postOrderNor(root);
+        System.out.println();
+
     }
 }
