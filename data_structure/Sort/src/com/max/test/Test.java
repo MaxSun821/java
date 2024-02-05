@@ -43,23 +43,33 @@ public class Test {
 
         System.out.println(endTime - startTime);
     }
+    public static void testHeapSort(int[] arr) {
+        arr = Arrays.copyOf(arr, arr.length);
+
+        long startTime = System.currentTimeMillis();
+        Sort.heapSort(arr);
+        long endTime = System.currentTimeMillis();
+
+        System.out.println(endTime - startTime);
+    }
 
 
     public static void main(String[] args) {
-        /*int[] arr = {5,7,2,9,11,24,57,23,91,45};
-        Sort.selectSort(arr);
-        System.out.println(Arrays.toString(arr));*/
+        int[] arr = {15,7,2,9,11,24,57,23,91,45};
+        Sort.quickSort2(arr);
+        System.out.println(Arrays.toString(arr));
 
 
-        int[] arr = new int[100000];
-        Random r = new Random();
-        for (int i = 0; i < arr.length; i++) {
-            int val = r.nextInt(1000000);
-            arr[i] = val;
-        }
-        testInsertSort(arr);
-        testShellSort(arr);
-        testSelectSort(arr);
+//        int[] arr = new int[1000000];
+//        Random r = new Random();
+//        for (int i = 0; i < arr.length; i++) {
+//            int val = r.nextInt(1000000);
+//            arr[i] = val;
+//        }
+//        //testInsertSort(arr);
+//        testShellSort(arr);
+//        //testSelectSort(arr);
+//        testHeapSort(arr);
 
     }
 }
