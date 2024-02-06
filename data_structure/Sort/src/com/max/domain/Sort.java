@@ -1,5 +1,6 @@
 package com.max.domain;
 
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -86,8 +87,8 @@ public class Sort {
         int end = arr.length - 1;
         while(end > 0) {
             swap(arr, 0, end);
-            end--;
             adjustDown(arr, 0, end);
+            end--;
         }
     }
 
@@ -112,8 +113,12 @@ public class Sort {
         }
     }
 
+    /**
+     * 快速排序
+     * @param arr
+     */
     public static void quickSort(int[] arr) {
-        quick(arr, 0, arr.length - 1);
+        quick2(arr, 0, arr.length - 1);
     }
     private static void quick(int[] arr, int begin, int end) {
         if(end <= begin) {
@@ -126,6 +131,44 @@ public class Sort {
 
         quick(arr, begin, ret - 1);
         quick(arr, ret + 1, end);
+    }
+
+    /**
+     * 三数取中优化
+     * @param arr
+     * @param begin
+     * @param end
+     */
+    private static void quick2(int[] arr, int begin, int end) {
+        if(begin >= end) {
+            return;
+        }
+        int mid = getMid(arr, begin, end);
+        swap(arr, mid, begin);
+        int ret = getIndexHole(arr, begin, end);
+        quick2(arr, begin, ret - 1);
+        quick2(arr, ret + 1, end);
+    }
+
+    private static int getMid(int[] arr, int left, int right) {
+        int mid = (left + right) / 2;
+        if(arr[left] < arr[right]) {
+            if(arr[mid] < arr[left]) {
+                return left;
+            } else if(arr[mid] > arr[right]) {
+                return right;
+            } else {
+                return mid;
+            }
+        } else {
+            if(arr[mid] < arr[right]) {
+                return right;
+            } else if(arr[mid] > arr[left]) {
+                return left;
+            } else {
+                return mid;
+            }
+        }
     }
 
     /**
@@ -187,4 +230,67 @@ public class Sort {
             }
         }
     }
+
+    /**
+     * 冒泡排序
+     * @param arr
+     */
+    public static void bubbleSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            boolean flag = true;
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if(arr[j + 1] < arr[j]) {
+                    swap(arr, j, j + 1);
+                    flag = false;
+                }
+            }
+            if(flag) {
+                break;
+            }
+        }
+    }
+
+    public static void mergeSort(int[] arr) {
+        mergeSortChild(arr, 0, arr.length - 1);
+    }
+    public static void mergeSortChild(int[] arr, int begin, int end) {
+        if(end <= begin) {
+            return;
+        }
+        int mid = (begin + end) / 2;
+        // 递归
+        mergeSortChild(arr, begin, mid);
+        mergeSortChild(arr, mid + 1, end);
+
+        // 合并
+        merge(arr, begin, end, mid);
+
+    }
+
+    private static void merge(int[] arr, int begin, int end, int mid) {
+        int[] newArr = new int[end - begin + 1];
+        int start1 = begin;
+        int start2 = mid + 1;
+        int k = 0;
+        while(start1 <= mid && start2 <= end) {
+            if(arr[start1] < arr[start2]) {
+                newArr[k++] = arr[start1++];
+            } else {
+                newArr[k++] = arr[start2++];
+            }
+        }
+        while(start1 <= mid) {
+            newArr[k++] = arr[start1++];
+        }
+        while(start2 <= end) {
+            newArr[k++] = arr[start2++];
+        }
+
+        for (int i = 0; i < newArr.length; i++) {
+            // 赋值回去
+            arr[i + begin] = newArr[i];
+        }
+
+    }
+
 }

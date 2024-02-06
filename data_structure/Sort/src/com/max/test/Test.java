@@ -53,10 +53,30 @@ public class Test {
         System.out.println(endTime - startTime);
     }
 
+    public static void testQuickSort(int[] arr) {
+        arr = Arrays.copyOf(arr, arr.length);
+
+        long startTime = System.currentTimeMillis();
+        Sort.quickSort(arr);
+        long endTime = System.currentTimeMillis();
+
+        System.out.println(endTime - startTime);
+    }
+
+    public static void testMergeSort(int[] arr) {
+        arr = Arrays.copyOf(arr, arr.length);
+
+        long startTime = System.currentTimeMillis();
+        Sort.mergeSort(arr);
+        long endTime = System.currentTimeMillis();
+
+        System.out.println(endTime - startTime);
+    }
+
 
     public static void main(String[] args) {
-        int[] arr = {15,7,2,9,11,24,57,23,91,45};
-        Sort.quickSort2(arr);
+        int[] arr = {5,2,3,1};
+        Sort.heapSort(arr);
         System.out.println(Arrays.toString(arr));
 
 
@@ -65,11 +85,13 @@ public class Test {
 //        for (int i = 0; i < arr.length; i++) {
 //            int val = r.nextInt(1000000);
 //            arr[i] = val;
+//            //arr[i] = i;
 //        }
 //        //testInsertSort(arr);
 //        testShellSort(arr);
 //        //testSelectSort(arr);
 //        testHeapSort(arr);
-
+//        testQuickSort(arr);
+//        testMergeSort(arr);
     }
 }
