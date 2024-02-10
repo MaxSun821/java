@@ -5,3 +5,5 @@ create table goods(
     storage int,
     description varchar(50)
 );
+insert into goods values('学生书包',18.91,101,null);
+update goods set price = price + 50 where storage > 30;
