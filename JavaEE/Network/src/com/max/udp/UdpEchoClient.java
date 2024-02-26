@@ -1,4 +1,4 @@
-package com.max.echo;
+package com.max.udp;
 
 import java.io.IOException;
 import java.net.*;
@@ -13,12 +13,12 @@ import java.util.Scanner;
  * @Create 2024/2/25 17:03
  * @Version 1.0
  */
-public class EchoClient {
+public class UdpEchoClient {
     private DatagramSocket datagramSocket;
     private String serverAddr;
     private int serverPort;
 
-    public EchoClient(String serverAddr, int serverPort) throws SocketException {
+    public UdpEchoClient(String serverAddr, int serverPort) throws SocketException {
         datagramSocket = new DatagramSocket(); // 客户端不需要指定端口号，只需要系统自动分配即可
         this.serverAddr = serverAddr;
         this.serverPort = serverPort;
@@ -47,7 +47,7 @@ public class EchoClient {
     }
 
     public static void main(String[] args) throws IOException {
-        EchoClient echoClient = new EchoClient("127.0.0.1", 9090);
+        UdpEchoClient echoClient = new UdpEchoClient("127.0.0.1", 9090);
         echoClient.start();
     }
 }

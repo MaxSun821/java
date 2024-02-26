@@ -1,9 +1,8 @@
-package com.max.echo;
+package com.max.udp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetSocketAddress;
 import java.net.SocketException;
 
 /**
@@ -15,10 +14,10 @@ import java.net.SocketException;
  * @Create 2024/2/25 17:02
  * @Version 1.0
  */
-public class EchoServer {
+public class UdpEchoServer {
     private DatagramSocket datagramSocket;
 
-    public EchoServer(int port) throws SocketException {
+    public UdpEchoServer(int port) throws SocketException {
         datagramSocket = new DatagramSocket(port); // 服务器需要指定端口号
     }
 
@@ -51,7 +50,7 @@ public class EchoServer {
     }
 
     public static void main(String[] args) throws IOException {
-        EchoServer echoServer = new EchoServer(9090);
+        UdpEchoServer echoServer = new UdpEchoServer(9090);
 
         echoServer.start();
     }
