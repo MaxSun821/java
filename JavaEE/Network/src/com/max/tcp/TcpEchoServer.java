@@ -28,20 +28,28 @@ public class TcpEchoServer {
 
     public void start() throws IOException {
         // 创建线程池
-        ExecutorService executorService = Executors.newCachedThreadPool();
+        //ExecutorService executorService = Executors.newCachedThreadPool();
         System.out.println("服务器启动");
         while(true) {
             Socket clientSocket = socket.accept();
-            executorService.submit(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        processConnection(clientSocket);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+            // 多线程
+            Thread t = new Thread(() -> {
+                try {
+                    processConnection(clientSocket);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             });
+//            executorService.submit(new Runnable() {
+//                @Override
+//                public void run() {
+//                    try {
+//                        processConnection(clientSocket);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
         }
     }
 
