@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * ClassName: TcpEchoServer
@@ -25,10 +27,21 @@ public class TcpEchoServer {
     }
 
     public void start() throws IOException {
+        // 创建线程池
+        ExecutorService executorService = Executors.newCachedThreadPool();
         System.out.println("服务器启动");
         while(true) {
             Socket clientSocket = socket.accept();
-            processConnection(clientSocket);
+            executorService.submit(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        processConnection(clientSocket);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
 
