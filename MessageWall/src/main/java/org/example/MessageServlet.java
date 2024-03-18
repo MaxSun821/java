@@ -123,18 +123,13 @@ public class MessageServlet extends HttpServlet {
 
             while(rs.next()) {
                 Message message = new Message();
-                String from = rs.getString("from");
-                String to = rs.getString("to");
-                String msg = rs.getString("message");
-
-                message.from = from;
-                message.to = to;
-                message.message = msg;
+                message.from = rs.getString("from");
+                message.to = rs.getString("to");
+                message.message = rs.getString("message");
 
                 list.add(message);
             }
 
-            int i = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
