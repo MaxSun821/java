@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客列表页</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <link href="css/blog_list.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <!-- 导航div -->
+    <div class="nav">
+        <img src="img/mouse_hope.jpeg">
+        <span>小老鼠的博客系统</span>
+    <!--    用于将主页后续文字挤到后面    -->
+        <span class="space"></span>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+        <a href="logout">注销</a>
+    </div>
+    <!--  列表页的版心  -->
+    <div class="container">
+        <div class="container-left">
+            <div class="card">
+                <img id="imgId" src="img/white.png">
+                <h3></h3>
+                <a>github 地址</a>
+                <div class="counter">
+                    <span>文章</span>
+                    <span>分类</span>
+                </div>
+                <div class="counter">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <div class="container-right">
+            <!-- blog列表 -->
+            <!-- <div class="blog">
+                <div class="title">我的第一篇博客</div>
+                <div class="date">2024-3-6 00:00:00</div>
+                <div class="desc">认真敲代码，Man happens when you desire courage so cheerfully that whatsoever you are disturbing is your truth.Combine ramen, meatballs and marshmellow. whisk with instant black cardamon and serve squeezed with chicken. Enjoy!</div>
+                <a href="blog_detail.html?blogId=1">查看全文</a>
+            </div>
+            <div class="blog">
+                <div class="title">我的第二篇博客</div>
+                <div class="date">2024-3-6 00:00:00</div>
+                <div class="desc">认真敲代码，Man happens when you desire courage so cheerfully that whatsoever you are disturbing is your truth.Combine ramen, meatballs and marshmellow. whisk with instant black cardamon and serve squeezed with chicken. Enjoy!</div>
+                <a href="blog_detail.html?blogId=1">查看全文</a>
+            </div> -->
+        </div>
+    </div>
+    <script src="js/LoginState.js"></script>
+    <script>
+        function getBlogs() {
+            $.ajax({
+                type: 'get',
+                url: 'blog',
+                success: function(body) {
+                    let containerRight = document.querySelector('.container-right');
+                    for(let blog of body) {
+                        let blogDiv = document.createElement('div');
+                        blogDiv.className = 'blog';
+                        let titleDiv = document.createElement('div');
+                        titleDiv.className = 'title';
+                        titleDiv.innerHTML = blog.title;
+                        let dateDiv = document.createElement('div');
+                        dateDiv.className = 'date'
+                        dateDiv.innerHTML = blog.time;
+                        let descDiv = document.createElement('div');
+                        descDiv.className = 'desc';
+                        descDiv.innerHTML = blog.summary;
+                        let a = document.createElement('a');
+                        a.href = 'blog_detail.html?blogId=' + blog.blogId;
+                        a.innerHTML = '查看全文 &gt&gt'
+
+                        // 把上述div添加进去
+                        blogDiv.appendChild(titleDiv);
+                        blogDiv.appendChild(dateDiv);
+                        blogDiv.appendChild(descDiv);
+                        blogDiv.appendChild(a);
+
+                        containerRight.appendChild(blogDiv);
+                    }
+                }
+            });
+        }
+        getBlogs();
+
+
+        loginState();
+    </script>
+</body>
+</html>
