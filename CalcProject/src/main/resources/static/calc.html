@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>计算器</h1>
+    <div>
+        <form action="/calc/sum" method="post">
+            num1:<input type="text" name="num1"><br>
+            num2:<input type="text" name="num2"><br>
+            <input type="submit" value="相加">
+        </form>
+        <!-- num1:<input type="text" name="num1" id="num1"> <br>
+        num2:<input type="text" name="num2" id="num2"> <br> -->
+        <!-- <input type="button" id="sum" value="加"> &nbsp;&nbsp;&nbsp; -->
+        <!-- <input type="button" id="sub" value="减"> &nbsp;&nbsp;&nbsp;
+        <input type="button" id="mul" value="乘"> &nbsp;&nbsp;&nbsp;
+        <input type="button" id="divi" value="除"> &nbsp;&nbsp;&nbsp; -->
+        <!-- <div class="ret"></div> -->
+    </div>
+    <!-- <script>
+        $('#sum').click(function() {
+            let num1 = $('#num1').val();
+            let num2 = $('#num2').val();
+            let sum = Number(num1) + Number(num2);
+            $('.ret').html('计算结果为: ' + sum);
+        });
+        $('#sub').click(function() {
+            let num1 = $('#num1').val();
+            let num2 = $('#num2').val();
+            let sum = Number(num1) - Number(num2);
+            $('.ret').html('计算结果为: ' + sum);
+        });
+        $('#mul').click(function() {
+            let num1 = $('#num1').val();
+            let num2 = $('#num2').val();
+            let sum = Number(num1) * Number(num2);
+            $('.ret').html('计算结果为: ' + sum);
+        });
+        $('#divi').click(function() {
+            let num1 = $('#num1').val();
+            let num2 = $('#num2').val();
+            let sum = Number(num1) / Number(num2);
+            $('.ret').html('计算结果为: ' + sum);
+        });
+    </script> -->
+</body>
+</html>
