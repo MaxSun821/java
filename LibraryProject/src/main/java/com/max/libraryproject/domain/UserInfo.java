@@ -12,6 +12,7 @@ import lombok.Data;
  * @Version 1.0
  */
 
+
 @Data
 public class UserInfo {
     private String username;

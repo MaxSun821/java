@@ -1,6 +1,7 @@
 package com.max.libraryproject.dao;
 
 import com.max.libraryproject.domain.UserInfo;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ import java.util.List;
  * @Create 2024/4/5 08:14
  * @Version 1.0
  */
+
+@Repository
 public class UserDao {
     public void insert(UserInfo userInfo) {
         return;

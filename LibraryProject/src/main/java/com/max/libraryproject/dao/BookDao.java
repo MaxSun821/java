@@ -1,6 +1,7 @@
 package com.max.libraryproject.dao;
 
 import com.max.libraryproject.domain.BookInfo;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import java.util.Random;
  * @Create 2024/4/5 08:24
  * @Version 1.0
  */
+
+@Repository
 public class BookDao {
     public List<BookInfo> mockBookList() {
         List<BookInfo> bookList = new ArrayList<>();

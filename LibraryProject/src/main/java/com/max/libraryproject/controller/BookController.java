@@ -3,6 +3,7 @@ package com.max.libraryproject.controller;
 import com.max.libraryproject.dao.BookDao;
 import com.max.libraryproject.domain.BookInfo;
 import com.max.libraryproject.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,9 +21,10 @@ import java.util.List;
 @RequestMapping("/book")
 @RestController
 public class BookController {
+    @Autowired
+    private BookService bookService;
     @RequestMapping("/getList")
     public List<BookInfo> getList() {
-        BookService bookService = new BookService();
         List<BookInfo> bookList = bookService.getBookList();
         return bookList;
     }

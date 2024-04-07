@@ -2,6 +2,8 @@ package com.max.libraryproject.service;
 
 import com.max.libraryproject.dao.BookDao;
 import com.max.libraryproject.domain.BookInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -14,9 +16,14 @@ import java.util.List;
  * @Create 2024/4/5 08:37
  * @Version 1.0
  */
+
+@Service
 public class BookService {
+    @Autowired
+    private BookDao bookDao;
+
+
     public List<BookInfo> getBookList() {
-        BookDao bookDao = new BookDao();
         List<BookInfo> bookList = bookDao.mockBookList();
         for(BookInfo bookInfo : bookList) {
 
