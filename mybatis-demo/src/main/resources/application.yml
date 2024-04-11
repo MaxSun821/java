@@ -6,7 +6,9 @@ spring:
     password: 11111111
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-# 开启驼峰命名
+
 mybatis:
   configuration:
-    map-underscore-to-camel-case: true
+     map-underscore-to-camel-case: true # 开启驼峰命名
+  mapper-locations: classpath:mapper/**Mapper.xml # 配置mybatis xml文件路径
+

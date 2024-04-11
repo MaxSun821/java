@@ -46,4 +46,5 @@ public interface UserInfoMapper {
     // 对数据库进行修改操作
     @Update("update userinfo set password = #{password} where username = #{username}")
     Integer updateByName(String username, String password);
+
 }
